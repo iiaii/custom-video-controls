@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        div#video-player-box {
+            width: 550px;
+            background: #000;
+            margin: 0px auto;
+        }
+
+        div#video-controls-bar {
+            background: #333;
+            padding: 10px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div id="video-player-box">
+    <video id="my-video" controls="controls" width="550" height="320">
+        <source src="https://vod.zumst.com/zumvrix/zvod/2/680a3d3c38311385c0ea806551611fa3e538e9584581bb6582de05699fedd78b/720">
+    </video>
+    <div id="video-controls-bar">
+        <button id="play-pause-btn" onclick="playPause(this, 'my-video')">Pause</button>
+</div>
+</div>
+
+<script>
+    function playPause(btn, videoId) {
+        const video = document.getElementById(videoId);
+
+        if(video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+        } else {
+            video.pause();
+            btn.innerHTML = "Play";
+        }
+    }
+</script>
+
+</body>
+</html>
