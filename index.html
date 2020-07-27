@@ -14,6 +14,7 @@
         div#video-controls-bar {
             background: #333;
             padding: 10px;
+            color: #CCC;
         }
     </style>
 
@@ -27,18 +28,25 @@
     </video>
     <div id="video-controls-bar">
         <button id="play-pause-btn">Play</button>
+        <input id="seek-slider" type="range" min="0" max="100" value="0" step="1" style="width: 350px;">
+        <span id="current-time-text"></span> / <span id="duration-time-text"></span>
 </div>
 </div>
 
 <script>
 
-    let video, playPauseBtn, seekbar;
+    let video, playPauseBtn, seekSlider, currentTimeText, durationTimeText;
 
     function initializePlayer() {
         video = document.getElementById("my-video");
         playPauseBtn = document.getElementById("play-pause-btn");
+        seekSlider = document.getElementById("seek-slider");
+        currentTimeText = document.getElementById("current-time-text");
+        durationTimeText = document.getElementById("duration-time-text");
 
-        playPauseBtn.addEventListener("click", playPause, false)
+        playPauseBtn.addEventListener("click", playPause, false);
+        seekSlider.addEventListener("change", videoSeek, false);
+        video.addEventListener("timeupdate", seekTimeUpdate, false);
     }
 
     window.onload = initializePlayer;
@@ -52,6 +60,37 @@
             video.pause();
             playPauseBtn.innerHTML = "Play";
         }
+    }
+
+    function videoSeek() {
+        const seekTo = video.duration * (seekSlider.value / 100);
+        video.currentTime = seekTo;
+    }
+
+    function seekTimeUpdate() {
+        const newTime = video.currentTime * (100 / video.duration);
+        seekSlider.value = newTime;
+
+        let currentMinutes = Math.floor(video.currentTime / 60);
+        let currentSeconds = Math.floor(video.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(video.duration / 60);
+        let durationSeconds = Math.round(video.duration - durationMinutes * 60);
+
+        if(currentMinutes < 10) {
+            currentMinutes = "0" + currentMinutes;
+        }
+        if(durationMinutes < 10) {
+            durationMinutes = "0"+durationMinutes;
+        }
+        if(currentSeconds < 10) {
+            currentSeconds = "0" + currentSeconds;
+        }
+        if(durationSeconds < 10) {
+          durationSeconds = "0"+durationSeconds;
+        }
+
+        currentTimeText.innerHTML = currentMinutes + ":" + currentSeconds;
+        durationTimeText.innerHTML = durationMinutes + ":" + durationSeconds;
     }
 </script>
 
