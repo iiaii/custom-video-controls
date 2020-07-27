@@ -7,14 +7,38 @@
     <style type="text/css">
         div#video-player-box {
             width: 550px;
+            height: 320px;
             background: #000;
             margin: 0px auto;
         }
 
+        div#video-player-box:hover > div#video-controls-bar {
+            display: inherit;
+
+        }
+
         div#video-controls-bar {
+            display: none;
+            opacity: 0.7;
+            position: relative;
+            bottom: 55px;
             background: #333;
+            height: 30px;
             padding: 10px;
             color: #CCC;
+        }
+
+        div#video-controls-bar:hover {
+            opacity: 1;
+        }
+
+        button {
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        button:hover {
+            opacity: 1;
         }
 
         input#seek-slider {
@@ -24,6 +48,22 @@
         input#volume-slider {
             width: 100px;
         }
+
+        input[type='range'] {
+            -webkit-appearance: none !important;
+            background: #666;
+            border: #666 1px solid;
+            height: 4px;
+        }
+
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            background: #FFF;
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            cursor: pointer;
+        }
     </style>
 
 
@@ -31,7 +71,7 @@
 <body>
 
 <div id="video-player-box">
-    <video id="my-video" width="550" height="320">
+    <video id="my-video" width="550px" height="320px">
         <source src="https://vod.zumst.com/zumvrix/zvod/2/680a3d3c38311385c0ea806551611fa3e538e9584581bb6582de05699fedd78b/720">
     </video>
     <div id="video-controls-bar">
@@ -41,6 +81,8 @@
         <button id="mute-btn">Mute</button>
         <input id="volume-slider" type="range" min="0" max="100" value="100" step="1">
     </div>
+
+
 </div>
 
 <script>
