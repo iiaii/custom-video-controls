@@ -16,6 +16,14 @@
             padding: 10px;
             color: #CCC;
         }
+
+        input#seek-slider {
+            width: 180px;
+        }
+
+        input#volume-slider {
+            width: 100px;
+        }
     </style>
 
 
@@ -28,14 +36,16 @@
     </video>
     <div id="video-controls-bar">
         <button id="play-pause-btn">Play</button>
-        <input id="seek-slider" type="range" min="0" max="100" value="0" step="1" style="width: 350px;">
+        <input id="seek-slider" type="range" min="0" max="100" value="0" step="1">
         <span id="current-time-text"></span> / <span id="duration-time-text"></span>
-</div>
+        <button id="mute-btn">Mute</button>
+        <input id="volume-slider" type="range" min="0" max="100" value="100" step="1">
+    </div>
 </div>
 
 <script>
 
-    let video, playPauseBtn, seekSlider, currentTimeText, durationTimeText;
+    let video, playPauseBtn, seekSlider, currentTimeText, durationTimeText, muteBtn, volumeSlider;
 
     function initializePlayer() {
         video = document.getElementById("my-video");
@@ -43,13 +53,18 @@
         seekSlider = document.getElementById("seek-slider");
         currentTimeText = document.getElementById("current-time-text");
         durationTimeText = document.getElementById("duration-time-text");
+        muteBtn = document.getElementById("mute-btn");
+        volumeSlider = document.getElementById("volume-slider");
 
         playPauseBtn.addEventListener("click", playPause, false);
+        muteBtn.addEventListener("click", videoMute, false);
         seekSlider.addEventListener("change", videoSeek, false);
+        volumeSlider.addEventListener("change", setVolume, false);
         video.addEventListener("timeupdate", seekTimeUpdate, false);
     }
 
     window.onload = initializePlayer;
+
 
     function playPause() {
 
@@ -91,6 +106,30 @@
 
         currentTimeText.innerHTML = currentMinutes + ":" + currentSeconds;
         durationTimeText.innerHTML = durationMinutes + ":" + durationSeconds;
+    }
+
+    function videoMute() {
+        if(video.muted) {
+            video.muted = false;
+            muteBtn.innerHTML = "Mute";
+            volumeSlider.value = video.volume * 100;
+        } else {
+            video.muted = true;
+            muteBtn.innerHTML = "UnMute";
+            volumeSlider.value = 0;
+        }
+    }
+
+    function setVolume() {
+
+        if(volumeSlider.value / 100 === 0) {
+            video.muted = true;
+            muteBtn.innerHTML = "UnMute";
+        } else {
+            video.volume = volumeSlider.value / 100;
+            video.muted = false;
+            muteBtn.innerHTML = "Mute";
+        }
     }
 </script>
 

@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="841f7ac8-123d-4566-a63e-09a98abfcce0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/qaplug_profiles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -40,6 +37,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -56,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1595799543651</updated>
       <workItem from="1595799545122" duration="1964000" />
-      <workItem from="1595825981597" duration="2363000" />
+      <workItem from="1595825981597" duration="3903000" />
     </task>
     <servers />
   </component>
@@ -68,6 +66,10 @@
       <screen x="0" y="23" width="1280" height="734" />
     </state>
     <state x="141" y="29" key="SettingsEditor/0.23.1280.734@0.23.1280.734" timestamp="1595799863575" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595829332845">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595829332845" />
     <state x="17" y="116" key="new project wizard" timestamp="1595799639309">
       <screen x="0" y="23" width="1280" height="734" />
     </state>
